@@ -30,6 +30,7 @@ io.on("connection",(socket)=>{
     socket.on("identity",async (userId)=>{
         await axios.post(`${process.env.NEXT_BASE_URL}/api/socket/connect`,{userId,socketId:socket.id})
     })
+    
     // event name must match client-side emit
     socket.on("updateLocation",async ({userId,latitude,longitude})=>{
         const location = {
